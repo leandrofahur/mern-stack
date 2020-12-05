@@ -4,8 +4,14 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 
-// COnnect the database:
+// Connect the database:
 connectDB();
+
+// Config the routes:
+app.use("/api/users", require("./routes/api/users"));
+app.use("/api/auth", require("./routes/api/auth"));
+app.use("/api/post", require("./routes/api/post"));
+app.use("/api/profile", require("./routes/api/profile"));
 
 app.get("/", (req, res) => {
   res.send("API running");
