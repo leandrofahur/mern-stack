@@ -18,7 +18,7 @@ router.post(
     check("email", "Please include a valid email").isEmail(),
     check(
       "password",
-      "PLease enter a password with 6 or more characters"
+      "Please enter a password with 6 or more characters"
     ).isLength({ min: 6 }),
   ],
   async (req, res) => {
@@ -52,11 +52,13 @@ router.post(
         password,
       });
 
+      // encrypt password:
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
 
       await user.save();
 
+      // return the jsonwebtokengm
       const payload = {
         user: {
           id: user.id,
