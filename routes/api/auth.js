@@ -9,7 +9,7 @@ const bcrypt = require("bcryptjs");
 
 // @route   GET api/auth
 // @desc    Test auth route
-// @access  Public
+// @access  Private
 
 router.get("/", auth, async (req, res) => {
   try {
